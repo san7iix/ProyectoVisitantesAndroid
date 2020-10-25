@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Visitantes</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="btn_registrar">Registrarme</string>
 </resources>

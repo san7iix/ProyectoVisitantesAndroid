@@ -20,13 +20,13 @@ public class DefBD {
 
     //Querys
 
-    public static final String query1 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaUsuarios +" ("+
-            DefBD.usuario_usuario + "text primary key, "+
+    public static final String query1 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaUsuarios +"( "+
+            DefBD.usuario_usuario + "text primary key,"+
             DefBD.usuario_password+ " text"+
             ")";
 
     public static final String query2 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaVisitantes +" ("+
-            DefBD.visitantes_identificacion + " text primary key, "+
+            DefBD.visitantes_identificacion + " text primary key,"+
             DefBD.visitantes_nombre + " text,"+
             DefBD.visitantes_apartamento + "text,"+
             DefBD.visitantes_tipo_visitante + "text,"+
