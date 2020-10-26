@@ -2,7 +2,7 @@ package com.example.visitantes;
 
 public class DefBD {
 
-    public static final String nameDB = "Visitantes";
+    public static final String nameDB = "VisitantesDb";
     //Tablas
     public static final String tablaVisitantes = "visitantes";
     public static final String tablaUsuarios = "usuarios";
@@ -20,10 +20,9 @@ public class DefBD {
 
     //Querys
 
-    public static final String query1 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaUsuarios +"( "+
-            DefBD.usuario_usuario + "text primary key,"+
-            DefBD.usuario_password+ " text"+
-            ")";
+    public static final String query1 = "CREATE TABLE IF NOT EXISTS " + DefBD.tablaUsuarios + " ( "
+            +DefBD.usuario_usuario + " TEXT PRIMARY KEY, "
+            +DefBD.usuario_password+" TEXT );";
 
     public static final String query2 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaVisitantes +" ("+
             DefBD.visitantes_identificacion + " text primary key,"+
@@ -31,8 +30,6 @@ public class DefBD {
             DefBD.visitantes_apartamento + "text,"+
             DefBD.visitantes_tipo_visitante + "text,"+
             DefBD.visitantes_fecha + " DATETIME DEFAULT CURRENT_TIMESTAMP"+
-            ")";
-
-
+            ");";
 
 }

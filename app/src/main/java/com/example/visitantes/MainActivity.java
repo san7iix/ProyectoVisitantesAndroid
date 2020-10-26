@@ -2,6 +2,7 @@ package com.example.visitantes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         et_password = findViewById(R.id.password_login);
 
         //Instanciación del controlador
-        usuario_controlador = new UsuarioControlador(this);
+        usuario_controlador = new UsuarioControlador(getApplicationContext());
 
         //Listeners de los botones
         btn_ingreso.setOnClickListener(this);
@@ -59,7 +60,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void Ingresar(){
         usuario = new Usuarios(et_usuario.getText().toString(), et_password.getText().toString());
-        usuario_controlador.Login(usuario);
+        if(usuario_controlador.Login(usuario)){
+            Toast.makeText(this,"Logueado correctamente", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this,"Datos de ingreso incorrectos", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     public void Registrar(){
@@ -74,4 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
+
+
 }

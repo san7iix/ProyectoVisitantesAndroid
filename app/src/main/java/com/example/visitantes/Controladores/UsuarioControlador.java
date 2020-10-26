@@ -18,7 +18,7 @@ public class UsuarioControlador {
 
 
     public UsuarioControlador(Context c) {
-        this.bd = new SQLhelper(c,1);
+        this.bd = new SQLhelper(c,2);
         this.c = c;
     }
 
@@ -30,7 +30,7 @@ public class UsuarioControlador {
             valores.put(DefBD.usuario_usuario, u.getUsuario());
             valores.put(DefBD.usuario_password, u.getPassword());
             long id = sql.insert(DefBD.tablaUsuarios, null, valores);
-            Toast.makeText(c, "Estudiantes registrado", Toast.LENGTH_LONG).show();
+            Toast.makeText(c, "Usuario registrado", Toast.LENGTH_LONG).show();
             bd.close();
         }catch (Exception e){
             Toast.makeText(c, "Error registrar usuario, " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -41,7 +41,7 @@ public class UsuarioControlador {
         try{
             String args[] = new String[]{u.getUsuario(),u.getPassword()};
             SQLiteDatabase sql = bd.getReadableDatabase();
-            Cursor c = sql.query(DefBD.tablaUsuarios, null, null, null, null, null, null);
+            Cursor c = sql.query(DefBD.tablaUsuarios, null, DefBD.usuario_usuario+" = ? AND "+DefBD.usuario_password+ " = ?", args, null, null, null);
             if (c.getCount() > 0) {
                 bd.close();
                 return true;
@@ -69,4 +69,5 @@ public class UsuarioControlador {
             return false;
         }
     }
+
 }
