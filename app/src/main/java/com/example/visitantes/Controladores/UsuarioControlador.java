@@ -18,13 +18,17 @@ public class UsuarioControlador {
 
 
     public UsuarioControlador(Context c) {
-        this.bd = new SQLhelper(c,1);
+        this.bd = new SQLhelper(c, 1);
         this.c = c;
     }
 
 
-    public void AgregarUsuario(Usuarios u){
+    public boolean AgregarUsuario(Usuarios u) {
         try {
+            if(this.buscarUsuario(u)){
+                Toast.makeText(c,"El usuario ya existe",Toast.LENGTH_SHORT).show();
+                return false;
+            }
             SQLiteDatabase sql = bd.getWritableDatabase();
             ContentValues valores = new ContentValues();
             valores.put(DefBD.usuario_usuario, u.getUsuario());
@@ -32,16 +36,18 @@ public class UsuarioControlador {
             long id = sql.insert(DefBD.tablaUsuarios, null, valores);
             Toast.makeText(c, "Usuario registrado", Toast.LENGTH_LONG).show();
             bd.close();
-        }catch (Exception e){
+            return true;
+        } catch (Exception e) {
             Toast.makeText(c, "Error registrar usuario, " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        return false;
     }
 
-    public boolean Login(Usuarios u){
-        try{
-            String args[] = new String[]{u.getUsuario(),u.getPassword()};
+    public boolean Login(Usuarios u) {
+        try {
+            String args[] = new String[]{u.getUsuario(), u.getPassword()};
             SQLiteDatabase sql = bd.getReadableDatabase();
-            Cursor c = sql.query(DefBD.tablaUsuarios, null, DefBD.usuario_usuario+" = ? AND "+DefBD.usuario_password+ " = ?", args, null, null, null);
+            Cursor c = sql.query(DefBD.tablaUsuarios, null, DefBD.usuario_usuario + " = ? AND " + DefBD.usuario_password + " = ?", args, null, null, null);
             if (c.getCount() > 0) {
                 bd.close();
                 return true;
@@ -49,23 +55,28 @@ public class UsuarioControlador {
                 bd.close();
                 return false;
             }
-        }catch (Exception e){
-            Toast.makeText(c, "Error al loguear usuario" , Toast.LENGTH_LONG).show();
-            Log.e("Error",e.getMessage());
-            return false;
+        } catch (Exception e) {
+            Toast.makeText(c, "Error al loguear usuario", Toast.LENGTH_LONG).show();
+            Log.e("Error", e.getMessage());
         }
+        return false;
     }
 
     public boolean buscarUsuario(Usuarios u) {
-        String args[] = new String[]{u.getUsuario()};
-        String col[] = new String[]{DefBD.usuario_usuario};
-        SQLiteDatabase sql = bd.getReadableDatabase();
-        Cursor c = sql.query(DefBD.tablaUsuarios, null, "usuario=?", args, null, null, null);
-        if (c.getCount() > 0) {
-            bd.close();
-            return true;
-        } else {
-            bd.close();
+        try {
+            String args[] = new String[]{u.getUsuario()};
+            String col[] = new String[]{DefBD.usuario_usuario};
+            SQLiteDatabase sql = bd.getReadableDatabase();
+            Cursor c = sql.query(DefBD.tablaUsuarios, null, "usuario=?", args, null, null, null);
+            if (c.getCount() > 0) {
+                bd.close();
+                return true;
+            } else {
+                bd.close();
+                return false;
+            }
+        } catch (Exception e) {
+            Toast.makeText(c, "Error al buscar el usuario", Toast.LENGTH_LONG).show();
             return false;
         }
     }

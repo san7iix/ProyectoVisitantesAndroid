@@ -46,8 +46,9 @@ public class EditarVisitante extends AppCompatActivity {
                     visitante.setNombre(nombre.getText().toString());
                     visitante.setApartamento(apartamento.getText().toString());
                     visitante.setTipo_visitante(checkRadioButton(v));
-                    controlador_visitante.Actualizar(visitante,identificacion);
-                    finish();
+                    if(controlador_visitante.Actualizar(visitante,identificacion)){
+                        finish();
+                    }
                 }
             }
         });

@@ -81,7 +81,9 @@ public class ActivityOpciones extends AppCompatActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.btn_agregar:
                 if(ValidarCampos(v)){
-                    AgregarVisitante(v);
+                    if(AgregarVisitante(v)){
+                        BorrarTexto();
+                    }
                 }
                 break;
             case R.id.btn_listar:
@@ -99,14 +101,13 @@ public class ActivityOpciones extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
-    public void AgregarVisitante(View v){
+    public boolean AgregarVisitante(View v){
         Visitante visitante = new Visitante();
         visitante.setId(identificacion.getText().toString());
         visitante.setNombre(nombre.getText().toString());
         visitante.setApartamento(apartamento.getText().toString());
         visitante.setTipo_visitante(checkRadioButton(v));
-
-        controlador_visitante.AgregarUsuario(visitante);
+        return controlador_visitante.Agregar(visitante);
     }
 
     public void EliminarPreferencias(){
@@ -114,5 +115,11 @@ public class ActivityOpciones extends AppCompatActivity implements View.OnClickL
         SharedPreferences.Editor editor = preferencias.edit();
         editor.remove("logueado");
         editor.commit();
+    }
+
+    public void BorrarTexto(){
+        identificacion.setText("");
+        nombre.setText("");
+        apartamento.setText("");
     }
 }

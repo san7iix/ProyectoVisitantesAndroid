@@ -47,7 +47,7 @@
         android:layout_height="59dp"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        android:padding="10px"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apartamento_agregar">
@@ -95,10 +95,11 @@
         app:layout_constraintTop_toBottomOf="@+id/nombre_agregar" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="368dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintTop_toBottomOf="@+id/tipo_visita_agregar"
         tools:layout_editor_absoluteX="1dp">
 
