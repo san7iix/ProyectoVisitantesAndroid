@@ -1,14 +1,21 @@
 package com.example.visitantes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.service.controls.actions.ControlAction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +49,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_ingreso.setOnClickListener(this);
         btn_registro.setOnClickListener(this);
 
+        if(VerificarLogin()){
+            Intent intent = new Intent(getApplicationContext(),ActivityOpciones.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -61,10 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void Ingresar(){
         usuario = new Usuarios(et_usuario.getText().toString(), et_password.getText().toString());
         if(usuario_controlador.Login(usuario)){
-            Toast.makeText(this,"Logueado correctamente", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),ActivityOpciones.class);
+            startActivity(intent);
+            GuardarPreferencias();
+            finish();
         }else{
             Toast.makeText(this,"Datos de ingreso incorrectos", Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -80,6 +96,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
+
+    public void GuardarPreferencias(){
+        SharedPreferences preferencias = getSharedPreferences("loguedIn", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.putBoolean("logueado", true);
+        editor.commit();
+    }
+
+    public boolean VerificarLogin(){
+        SharedPreferences preferences = getSharedPreferences("loguedIn", Context.MODE_PRIVATE);
+        return preferences.getBoolean("logueado",false);
+    }
+
+
+
 
 
 }

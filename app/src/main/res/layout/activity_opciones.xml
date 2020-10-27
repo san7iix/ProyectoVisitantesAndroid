@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityOpciones">
+
+    <TextView
+        android:id="@+id/editar_visitantes_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/page_visitantes_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/identificacion_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Identificación"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editar_visitantes_tv" />
+
+    <EditText
+        android:id="@+id/nombre_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/identificacion_agregar" />
+
+    <RadioGroup
+        android:id="@+id/tipo_visita_agregar"
+        android:layout_width="409dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:padding="10px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apartamento_agregar">
+
+        <RadioButton
+            android:id="@+id/tipo_visitante_amigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:layout_weight="1"
+            android:onClick="checkRadioButton"
+            android:text="@string/tipo_visitante_amigo" />
+
+        <RadioButton
+            android:id="@+id/tipo_visitante_familia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:layout_weight="1"
+            android:onClick="checkRadioButton"
+            android:text="@string/tipo_visita_1" />
+
+        <RadioButton
+            android:id="@+id/tipo_visitante_domiciliario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:layout_weight="1"
+            android:onClick="checkRadioButton"
+            android:text="@string/tipo_visitante_domiciliario" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/apartamento_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Apartamento a visitar"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_agregar" />
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="368dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tipo_visita_agregar"
+        tools:layout_editor_absoluteX="1dp">
+
+        <Button
+            android:id="@+id/btn_agregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#673AB7"
+            android:text="@string/btn_agregar"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_listar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_listar" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

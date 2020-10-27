@@ -4,25 +4,29 @@ import java.util.Date;
 
 public class Visitante {
 
-    private Integer id;
+    private String id;
     private String nombre;
     private String apartamento;
     private String tipo_visitante;
     private String fecha;
 
-    public Visitante(Integer id, String nombre, String apartamento, String tipo_visitante, String fecha) {
+    public Visitante(String id, String nombre, String apartamento, String tipo_visitante) {
         this.id = id;
         this.nombre = nombre;
         this.apartamento = apartamento;
         this.tipo_visitante = tipo_visitante;
-        this.fecha = fecha;
+        this.fecha = new Date().toString();
     }
 
-    public Integer getId() {
+    public Visitante() {
+
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -18,7 +18,7 @@ public class UsuarioControlador {
 
 
     public UsuarioControlador(Context c) {
-        this.bd = new SQLhelper(c,2);
+        this.bd = new SQLhelper(c,1);
         this.c = c;
     }
 

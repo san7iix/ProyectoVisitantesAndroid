@@ -2,4 +2,11 @@
     <string name="app_name">Visitantes</string>
     <string name="btn_ingresar">Ingresar</string>
     <string name="btn_registrar">Registrarme</string>
+    <string name="page_visitantes_tv">Agregar visitante</string>
+    <string name="tipo_visita_1">Familia</string>
+    <string name="tipo_visitante_amigo">Amigo</string>
+    <string name="tipo_visitante_domiciliario">Domiciliario</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_listar">Listar</string>
+    <string name="editar_tv">Editar visitante</string>
 </resources>

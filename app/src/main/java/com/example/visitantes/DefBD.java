@@ -27,8 +27,8 @@ public class DefBD {
     public static final String query2 = "CREATE TABLE IF NOT EXISTS "+ DefBD.tablaVisitantes +" ("+
             DefBD.visitantes_identificacion + " text primary key,"+
             DefBD.visitantes_nombre + " text,"+
-            DefBD.visitantes_apartamento + "text,"+
-            DefBD.visitantes_tipo_visitante + "text,"+
+            DefBD.visitantes_apartamento + " text,"+
+            DefBD.visitantes_tipo_visitante + " text,"+
             DefBD.visitantes_fecha + " DATETIME DEFAULT CURRENT_TIMESTAMP"+
             ");";
 
